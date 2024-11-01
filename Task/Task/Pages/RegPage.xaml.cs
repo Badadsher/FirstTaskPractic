@@ -12,28 +12,27 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Task.Pages;
 
 namespace Task.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для AuthPage.xaml
+    /// Логика взаимодействия для RegPage.xaml
     /// </summary>
-    public partial class AuthPage : Page
+    public partial class RegPage : Page
     {
-        public AuthPage()
+        public RegPage()
         {
             InitializeComponent();
         }
 
         private void AuthClick(object sender, RoutedEventArgs e)
         {
-          
+            NavigationService.Navigate(new AuthPage());
         }
 
         private void RegClick(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new RegPage());
+
         }
     }
 }

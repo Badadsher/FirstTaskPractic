@@ -20,3 +20,5 @@ C:\Users\Heisenberg\Downloads\FirstTaskPractic\Task\Task\obj\Debug\Task.csproj.C
 C:\Users\Heisenberg\Downloads\FirstTaskPractic\Task\Task\obj\Debug\Task.csproj.Up2Date
 C:\Users\Heisenberg\Downloads\FirstTaskPractic\Task\Task\obj\Debug\Task.exe
 C:\Users\Heisenberg\Downloads\FirstTaskPractic\Task\Task\obj\Debug\Task.pdb
+C:\Users\Heisenberg\Downloads\FirstTaskPractic\Task\Task\obj\Debug\Pages\RegPage.g.cs
+C:\Users\Heisenberg\Downloads\FirstTaskPractic\Task\Task\obj\Debug\Pages\RegPage.baml

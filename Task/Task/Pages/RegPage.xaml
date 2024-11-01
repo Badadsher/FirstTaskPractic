@@ -1,4 +1,4 @@
-﻿<Page x:Class="Task.Pages.AuthPage"
+﻿<Page x:Class="Task.Pages.RegPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,19 +6,18 @@
       xmlns:local="clr-namespace:Task.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="AuthPage">
-
+      Title="RegPage">
     <Page.Resources>
         <!-- Анимация изменения цвета -->
         <Storyboard x:Key="GradientAnimation" RepeatBehavior="Forever" AutoReverse="True">
             <!-- Анимация для начального цвета градиента -->
             <ColorAnimation Storyboard.TargetName="GradientStart" 
-                            Storyboard.TargetProperty="Color" 
-                            From="#FFEC9E2B" To="LightPink" Duration="0:0:5"/>
+                         Storyboard.TargetProperty="Color" 
+                         From="#FFEC9E2B" To="LightPink" Duration="0:0:5"/>
             <!-- Анимация для конечного цвета градиента -->
             <ColorAnimation Storyboard.TargetName="GradientEnd" 
-                            Storyboard.TargetProperty="Color" 
-                            From="LightPink" To="#FFEC9E2B" Duration="0:0:5"/>
+                         Storyboard.TargetProperty="Color" 
+                         From="LightPink" To="#FFEC9E2B" Duration="0:0:5"/>
         </Storyboard>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -237,12 +236,12 @@
 
     <Grid Margin="0,-36,0,36">
 
-        <Button Style="{DynamicResource BT}" Content="ВХОД" HorizontalAlignment="Center" Margin="0,289,0,0" VerticalAlignment="Top" Height="42" Width="252" Background="#7FFFFBD4" Foreground="White" FontFamily="Bahnschrift SemiBold" FontSize="20" BorderBrush="#00707070" Click="AuthClick"/>
+        <Button Style="{DynamicResource BT}" Content="РЕГИСТРАЦИЯ" HorizontalAlignment="Center" Margin="0,289,0,0" VerticalAlignment="Top" Height="42" Width="252" Background="#7FFFFBD4" Foreground="White" FontFamily="Bahnschrift SemiBold" FontSize="20" BorderBrush="#00707070" Click="RegClick"/>
         <TextBox Style="{DynamicResource TB}"   VerticalContentAlignment="Center"  HorizontalAlignment="Left" Margin="231,179,0,0" Text="" VerticalAlignment="Top" Width="324" Height="32" Background="#7FCCCAAF" SelectionBrush="#FFFFC700" BorderBrush="#19FFC700" Foreground="White" TextAlignment="Center"/>
         <PasswordBox Style="{DynamicResource PB}" HorizontalAlignment="Left" Margin="231,237,0,0" VerticalAlignment="Top" Width="324" Height="32" Background="#7FCCCAAF" BorderBrush="#19FFC700" Foreground="White" VerticalContentAlignment="Center"  HorizontalContentAlignment="Center" SelectionBrush="#FFFFC700"/>
         <TextBlock HorizontalAlignment="Left" Margin="373,159,0,0" TextWrapping="Wrap" Text="ЛОГИН" VerticalAlignment="Top" Foreground="White" FontWeight="Bold"/>
         <TextBlock HorizontalAlignment="Left" Margin="369,220,0,0" TextWrapping="Wrap" Text="ПАРОЛЬ" VerticalAlignment="Top" Foreground="White" FontWeight="Bold"/>
-        <TextBlock HorizontalAlignment="Left" Margin="288,343,0,0" TextWrapping="Wrap" Text="НЕТ АККАУНТА?" VerticalAlignment="Top" Foreground="White" FontWeight="Bold"/>
-        <Button Style="{DynamicResource BTsmall}"  Content="РЕГИСТРАЦИЯ" HorizontalAlignment="Left" Margin="388,343,0,0" VerticalAlignment="Top" Height="16" Width="104" Background="#7F80FF75" Foreground="White" FontFamily="Bahnschrift SemiBold" FontSize="11" BorderBrush="#00707070" Click="RegClick"/>
+        <TextBlock HorizontalAlignment="Left" Margin="288,343,0,0" TextWrapping="Wrap" Text="ЕСТЬ АККАУНТ?" VerticalAlignment="Top" Foreground="White" FontWeight="Bold"/>
+        <Button Style="{DynamicResource BTsmall}"  Content="ВХОД" HorizontalAlignment="Left" Margin="388,343,0,0" VerticalAlignment="Top" Height="16" Width="104" Background="#7F80FF75" Foreground="White" FontFamily="Bahnschrift SemiBold" FontSize="11" BorderBrush="#00707070" Click="AuthClick"/>
     </Grid>
 </Page>

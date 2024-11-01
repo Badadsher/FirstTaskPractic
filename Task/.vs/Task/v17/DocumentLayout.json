@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "C:\\Users\\Heisenberg\\Downloads\\FirstTaskPractic\\Task\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{37C60B56-4012-46ED-BB09-0B8706C9A0A7}|Task\\Task.csproj|c:\\users\\heisenberg\\downloads\\firsttaskpractic\\task\\task\\pages\\regpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{37C60B56-4012-46ED-BB09-0B8706C9A0A7}|Task\\Task.csproj|solutionrelative:task\\pages\\regpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C60B56-4012-46ED-BB09-0B8706C9A0A7}|Task\\Task.csproj|c:\\users\\heisenberg\\downloads\\firsttaskpractic\\task\\task\\pages\\regpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37C60B56-4012-46ED-BB09-0B8706C9A0A7}|Task\\Task.csproj|solutionrelative:task\\pages\\regpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C60B56-4012-46ED-BB09-0B8706C9A0A7}|Task\\Task.csproj|c:\\users\\heisenberg\\downloads\\firsttaskpractic\\task\\task\\pages\\authpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37C60B56-4012-46ED-BB09-0B8706C9A0A7}|Task\\Task.csproj|solutionrelative:task\\pages\\authpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{37C60B56-4012-46ED-BB09-0B8706C9A0A7}|Task\\Task.csproj|c:\\users\\heisenberg\\downloads\\firsttaskpractic\\task\\task\\pages\\authpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{37C60B56-4012-46ED-BB09-0B8706C9A0A7}|Task\\Task.csproj|solutionrelative:task\\pages\\authpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
@@ -26,23 +38,61 @@
       "DocumentGroups": [
         {
           "DockedWidth": 266,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Pages\\RegPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Heisenberg\\Downloads\\FirstTaskPractic\\Task\\Task\\Pages\\RegPage.xaml.cs",
+              "RelativeDocumentMoniker": "Task\\Pages\\RegPage.xaml.cs",
+              "ToolTip": "C:\\Users\\Heisenberg\\Downloads\\FirstTaskPractic\\Task\\Task\\Pages\\RegPage.xaml.cs",
+              "RelativeToolTip": "Task\\Pages\\RegPage.xaml.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAA3AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-01T13:18:59.866Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "RegPage.xaml",
+              "DocumentMoniker": "C:\\Users\\Heisenberg\\Downloads\\FirstTaskPractic\\Task\\Task\\Pages\\RegPage.xaml",
+              "RelativeDocumentMoniker": "Task\\Pages\\RegPage.xaml",
+              "ToolTip": "C:\\Users\\Heisenberg\\Downloads\\FirstTaskPractic\\Task\\Task\\Pages\\RegPage.xaml*",
+              "RelativeToolTip": "Task\\Pages\\RegPage.xaml*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-11-01T13:12:05.648Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Pages\\AuthPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Heisenberg\\Downloads\\FirstTaskPractic\\Task\\Task\\Pages\\AuthPage.xaml.cs",
+              "RelativeDocumentMoniker": "Task\\Pages\\AuthPage.xaml.cs",
+              "ToolTip": "C:\\Users\\Heisenberg\\Downloads\\FirstTaskPractic\\Task\\Task\\Pages\\AuthPage.xaml.cs",
+              "RelativeToolTip": "Task\\Pages\\AuthPage.xaml.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACMAAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-01T13:10:20.953Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "AuthPage.xaml",
               "DocumentMoniker": "C:\\Users\\Heisenberg\\Downloads\\FirstTaskPractic\\Task\\Task\\Pages\\AuthPage.xaml",
               "RelativeDocumentMoniker": "Task\\Pages\\AuthPage.xaml",
-              "ToolTip": "C:\\Users\\Heisenberg\\Downloads\\FirstTaskPractic\\Task\\Task\\Pages\\AuthPage.xaml*",
-              "RelativeToolTip": "Task\\Pages\\AuthPage.xaml*",
+              "ToolTip": "C:\\Users\\Heisenberg\\Downloads\\FirstTaskPractic\\Task\\Task\\Pages\\AuthPage.xaml",
+              "RelativeToolTip": "Task\\Pages\\AuthPage.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2024-11-01T12:31:08.624Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "AppData.cs",
               "DocumentMoniker": "C:\\Users\\Heisenberg\\Downloads\\FirstTaskPractic\\Task\\Task\\Model\\AppData.cs",
               "RelativeDocumentMoniker": "Task\\Model\\AppData.cs",
@@ -55,7 +105,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\Heisenberg\\Downloads\\FirstTaskPractic\\Task\\Task\\MainWindow.xaml",
               "RelativeDocumentMoniker": "Task\\MainWindow.xaml",
@@ -67,7 +117,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\Heisenberg\\Downloads\\FirstTaskPractic\\Task\\Task\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "Task\\MainWindow.xaml.cs",
