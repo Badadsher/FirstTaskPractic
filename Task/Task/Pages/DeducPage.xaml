@@ -1,4 +1,4 @@
-﻿<Page x:Class="Task.Pages.RegPage"
+﻿<Page x:Class="Task.Pages.DeducPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,18 +6,18 @@
       xmlns:local="clr-namespace:Task.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="RegPage">
+      Title="DeducPage" Loaded="Page_Loaded">
     <Page.Resources>
         <!-- Анимация изменения цвета -->
         <Storyboard x:Key="GradientAnimation" RepeatBehavior="Forever" AutoReverse="True">
             <!-- Анимация для начального цвета градиента -->
             <ColorAnimation Storyboard.TargetName="GradientStart" 
-                         Storyboard.TargetProperty="Color" 
-                         From="#FFEC9E2B" To="LightPink" Duration="0:0:5"/>
+                            Storyboard.TargetProperty="Color" 
+                            From="#FFEC9E2B" To="LightPink" Duration="0:0:5"/>
             <!-- Анимация для конечного цвета градиента -->
             <ColorAnimation Storyboard.TargetName="GradientEnd" 
-                         Storyboard.TargetProperty="Color" 
-                         From="LightPink" To="#FFEC9E2B" Duration="0:0:5"/>
+                            Storyboard.TargetProperty="Color" 
+                            From="LightPink" To="#FFEC9E2B" Duration="0:0:5"/>
         </Storyboard>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -218,6 +218,85 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="{ComponentResourceKey ResourceId=DataGridSelectAllButtonStyle, TypeInTargetAssembly={x:Type DataGrid}}" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Rectangle x:Name="Border" Fill="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" SnapsToDevicePixels="True"/>
+                            <Polygon x:Name="Arrow" Fill="Black" HorizontalAlignment="Right" Margin="8,8,3,3" Opacity="0.15" Points="0,10 10,10 10,0" Stretch="Uniform" VerticalAlignment="Bottom"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Stroke" TargetName="Border" Value="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Fill" TargetName="Border" Value="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Visibility" TargetName="Arrow" Value="Collapsed"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="dg" TargetType="{x:Type DataGrid}">
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderBrush" Value="#FF688CAF"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="RowDetailsVisibilityMode" Value="VisibleWhenSelected"/>
+            <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type DataGrid}">
+                        <Border CornerRadius="40" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="DG_ScrollViewer" Focusable="false">
+                                <ScrollViewer.Template>
+                                    <ControlTemplate TargetType="{x:Type ScrollViewer}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Button Command="{x:Static DataGrid.SelectAllCommand}" Focusable="false" Style="{DynamicResource {ComponentResourceKey ResourceId=DataGridSelectAllButtonStyle, TypeInTargetAssembly={x:Type DataGrid}}}" Visibility="{Binding HeadersVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.All}, Converter={x:Static DataGrid.HeadersVisibilityConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" Width="{Binding CellsPanelHorizontalOffset, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"/>
+                                            <DataGridColumnHeadersPresenter x:Name="PART_ColumnHeadersPresenter" Grid.Column="1" Visibility="{Binding HeadersVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.Column}, Converter={x:Static DataGrid.HeadersVisibilityConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"/>
+                                            <ScrollBar x:Name="PART_VerticalScrollBar" Grid.Column="2" Maximum="{TemplateBinding ScrollableHeight}" Orientation="Vertical" Grid.Row="1" Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource Mode=TemplatedParent}}" ViewportSize="{TemplateBinding ViewportHeight}" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"/>
+                                            <Grid Grid.Column="1" Grid.Row="2">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="{Binding NonFrozenColumnsViewportHorizontalOffset, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <ScrollBar x:Name="PART_HorizontalScrollBar" Grid.Column="1" Maximum="{TemplateBinding ScrollableWidth}" Orientation="Horizontal" Value="{Binding HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource Mode=TemplatedParent}}" ViewportSize="{TemplateBinding ViewportWidth}" Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"/>
+                                            </Grid>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </ScrollViewer.Template>
+                                <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            </ScrollViewer>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsGrouping" Value="true"/>
+                        <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
+                </MultiTrigger>
+            </Style.Triggers>
+        </Style>
     </Page.Resources>
 
     <Page.Triggers>
@@ -235,27 +314,16 @@
     </Page.Background>
 
     <Grid Margin="0,-36,0,36">
+        <Button Style="{DynamicResource BT}" Content="НАЗАД" HorizontalAlignment="Left" Margin="9,49,0,0" VerticalAlignment="Top" Height="41" Width="190" Background="#CCFF2F00" Foreground="White" BorderBrush="#0025021A" FontFamily="Bahnschrift SemiCondensed" FontWeight="Bold" FontSize="18" Click="backClick"/>
+        <Label x:Name="hello" Content="ИЗДЕРЖКИ" HorizontalAlignment="Center" Margin="0,108,0,0" VerticalAlignment="Top" Height="70" Width="212" Foreground="White" FontSize="36" FontFamily="Bahnschrift SemiBold"/>
+        <DataGrid x:Name="spisok" AutoGenerateColumns="False"  d:ItemsSource="{d:SampleData ItemCount=4}" Margin="102,183,102,53">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Cумма налога" Width="*" Binding="{Binding TaxAmount}"/>
+                <DataGridTextColumn Header="Алименты" Width="*" Binding="{Binding AlimonyAmount}"/>
+                <DataGridTextColumn Header="Прочее" Width="*" Binding="{Binding OtherDeductions}"/>
+                <DataGridTextColumn Header="Итоговая сумма" Width="*" Binding="{Binding TotalDeductions}"/>
+            </DataGrid.Columns>
+        </DataGrid>
 
-        <Button Style="{DynamicResource BT}" Content="РЕГИСТРАЦИЯ" HorizontalAlignment="Center" Margin="0,320,0,0" VerticalAlignment="Top" Height="42" Width="252" Background="#7FFFFBD4" Foreground="White" FontFamily="Bahnschrift SemiBold" FontSize="20" BorderBrush="#00707070" Click="RegClick"/>
-        <TextBox x:Name="namebox" Style="{DynamicResource TB}"   VerticalContentAlignment="Center"  HorizontalAlignment="Center" Margin="0,111,0,0" Text="" VerticalAlignment="Top" Width="324" Height="32" Background="#7FCCCAAF" SelectionBrush="#FFFFC700" BorderBrush="#19FFC700" Foreground="White" TextAlignment="Center"/>
-        <PasswordBox x:Name="passwordbox" Style="{DynamicResource PB}" HorizontalAlignment="Center" Margin="0,169,0,0" VerticalAlignment="Top" Width="324" Height="32" Background="#7FCCCAAF" BorderBrush="#19FFC700" Foreground="White" VerticalContentAlignment="Center"  HorizontalContentAlignment="Center" SelectionBrush="#FFFFC700"/>
-        <TextBlock HorizontalAlignment="Center" Margin="0,90,0,0" TextWrapping="Wrap" Text="ИМЯ" VerticalAlignment="Top" Foreground="White" FontWeight="Bold"/>
-        <TextBlock HorizontalAlignment="Center" Margin="0,152,0,0" TextWrapping="Wrap" Text="ПАРОЛЬ" VerticalAlignment="Top" Foreground="White" FontWeight="Bold"/>
-        <TextBlock HorizontalAlignment="Left" Margin="288,374,0,0" TextWrapping="Wrap" Text="ЕСТЬ АККАУНТ?" VerticalAlignment="Top" Foreground="White" FontWeight="Bold"/>
-        <Button Style="{DynamicResource BTsmall}"  Content="ВХОД" HorizontalAlignment="Left" Margin="388,374,0,0" VerticalAlignment="Top" Height="16" Width="104" Background="#7F80FF75" Foreground="White" FontFamily="Bahnschrift SemiBold" FontSize="11" BorderBrush="#00707070" Click="AuthClick"/>
-        <ComboBox x:Name="combobox" HorizontalAlignment="Left" Margin="334,225,0,0" VerticalAlignment="Top" Width="120" Foreground="#FF8E2929" BorderBrush="#FFFF8484">
-            <ComboBox.Background>
-                <LinearGradientBrush EndPoint="0,1">
-                    <GradientStop Color="#FFF0F0F0"/>
-                    <GradientStop Color="#FFFFB2B2" Offset="1"/>
-                </LinearGradientBrush>
-            </ComboBox.Background>
-            <ComboBoxItem Content="Информационные Технологии" />
-            <ComboBoxItem Content="Логистические вопросы" />
-            <ComboBoxItem Content="Юридические вопросы" />
-        </ComboBox>
-        <TextBlock HorizontalAlignment="Center" Margin="0,204,0,0" TextWrapping="Wrap" Text="ДЕПАРТАМЕНТ" VerticalAlignment="Top" Foreground="White" FontWeight="Bold"/>
-        <TextBlock HorizontalAlignment="Center" Margin="0,252,0,0" TextWrapping="Wrap" Text="ВАША ПРОФЕССИЯ" VerticalAlignment="Top" Foreground="White" FontWeight="Bold"/>
-        <TextBox x:Name="dolzbox" Style="{DynamicResource TB}"   VerticalContentAlignment="Center"  HorizontalAlignment="Left" Margin="232,271,0,0" Text="" VerticalAlignment="Top" Width="324" Height="32" Background="#7FCCCAAF" SelectionBrush="#FFFFC700" BorderBrush="#19FFC700" Foreground="White" TextAlignment="Center"/>
     </Grid>
 </Page>

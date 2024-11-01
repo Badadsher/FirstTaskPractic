@@ -22,3 +22,12 @@ C:\Users\Heisenberg\Downloads\FirstTaskPractic\Task\Task\obj\Debug\Task.exe
 C:\Users\Heisenberg\Downloads\FirstTaskPractic\Task\Task\obj\Debug\Task.pdb
 C:\Users\Heisenberg\Downloads\FirstTaskPractic\Task\Task\obj\Debug\Pages\RegPage.g.cs
 C:\Users\Heisenberg\Downloads\FirstTaskPractic\Task\Task\obj\Debug\Pages\RegPage.baml
+C:\Users\Heisenberg\Downloads\FirstTaskPractic\Task\Task\obj\Debug\Task_Content.g.cs
+C:\Users\Heisenberg\Downloads\FirstTaskPractic\Task\Task\obj\Debug\Pages\EmpPage.g.cs
+C:\Users\Heisenberg\Downloads\FirstTaskPractic\Task\Task\obj\Debug\Pages\EmpPage.baml
+C:\Users\Heisenberg\Downloads\FirstTaskPractic\Task\Task\obj\Debug\Pages\DeducPage.g.cs
+C:\Users\Heisenberg\Downloads\FirstTaskPractic\Task\Task\obj\Debug\Pages\PayrollPage.g.cs
+C:\Users\Heisenberg\Downloads\FirstTaskPractic\Task\Task\obj\Debug\Pages\ReportsPage.g.cs
+C:\Users\Heisenberg\Downloads\FirstTaskPractic\Task\Task\obj\Debug\Pages\DeducPage.baml
+C:\Users\Heisenberg\Downloads\FirstTaskPractic\Task\Task\obj\Debug\Pages\PayrollPage.baml
+C:\Users\Heisenberg\Downloads\FirstTaskPractic\Task\Task\obj\Debug\Pages\ReportsPage.baml

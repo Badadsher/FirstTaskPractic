@@ -32,6 +32,7 @@
           <Property Name="PositionID" Type="int" Nullable="false" />
           <Property Name="Profession" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="DepartmentID" Type="int" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="4" />
         </EntityType>
         <EntityType Name="Payroll">
           <Key>
@@ -230,6 +231,7 @@
           <Property Name="PositionID" Type="Int32" Nullable="false" />
           <Property Name="Profession" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DepartmentID" Type="Int32" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Deduc" Relationship="Self.FK_Deduc_Employees" FromRole="Employees" ToRole="Deduc" />
           <NavigationProperty Name="Departments" Relationship="Self.FK_Employees_Departments" FromRole="Employees" ToRole="Departments" />
           <NavigationProperty Name="Positions" Relationship="Self.FK_Employees_Positions" FromRole="Employees" ToRole="Positions" />
@@ -438,6 +440,7 @@
                 <ScalarProperty Name="PositionID" ColumnName="PositionID" />
                 <ScalarProperty Name="Profession" ColumnName="Profession" />
                 <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

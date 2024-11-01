@@ -238,8 +238,8 @@
     <Grid Margin="0,-36,0,36">
 
         <Button Style="{DynamicResource BT}" Content="ВХОД" HorizontalAlignment="Center" Margin="0,289,0,0" VerticalAlignment="Top" Height="42" Width="252" Background="#7FFFFBD4" Foreground="White" FontFamily="Bahnschrift SemiBold" FontSize="20" BorderBrush="#00707070" Click="AuthClick"/>
-        <TextBox Style="{DynamicResource TB}"   VerticalContentAlignment="Center"  HorizontalAlignment="Left" Margin="231,179,0,0" Text="" VerticalAlignment="Top" Width="324" Height="32" Background="#7FCCCAAF" SelectionBrush="#FFFFC700" BorderBrush="#19FFC700" Foreground="White" TextAlignment="Center"/>
-        <PasswordBox Style="{DynamicResource PB}" HorizontalAlignment="Left" Margin="231,237,0,0" VerticalAlignment="Top" Width="324" Height="32" Background="#7FCCCAAF" BorderBrush="#19FFC700" Foreground="White" VerticalContentAlignment="Center"  HorizontalContentAlignment="Center" SelectionBrush="#FFFFC700"/>
+        <TextBox x:Name="loginTB" Style="{DynamicResource TB}"   VerticalContentAlignment="Center"  HorizontalAlignment="Left" Margin="231,179,0,0" Text="" VerticalAlignment="Top" Width="324" Height="32" Background="#7FCCCAAF" SelectionBrush="#FFFFC700" BorderBrush="#19FFC700" Foreground="White" TextAlignment="Center"/>
+        <PasswordBox x:Name="passwordTB" Style="{DynamicResource PB}" HorizontalAlignment="Left" Margin="231,237,0,0" VerticalAlignment="Top" Width="324" Height="32" Background="#7FCCCAAF" BorderBrush="#19FFC700" Foreground="White" VerticalContentAlignment="Center"  HorizontalContentAlignment="Center" SelectionBrush="#FFFFC700"/>
         <TextBlock HorizontalAlignment="Left" Margin="373,159,0,0" TextWrapping="Wrap" Text="ЛОГИН" VerticalAlignment="Top" Foreground="White" FontWeight="Bold"/>
         <TextBlock HorizontalAlignment="Left" Margin="369,220,0,0" TextWrapping="Wrap" Text="ПАРОЛЬ" VerticalAlignment="Top" Foreground="White" FontWeight="Bold"/>
         <TextBlock HorizontalAlignment="Left" Margin="288,343,0,0" TextWrapping="Wrap" Text="НЕТ АККАУНТА?" VerticalAlignment="Top" Foreground="White" FontWeight="Bold"/>

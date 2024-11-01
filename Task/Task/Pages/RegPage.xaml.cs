@@ -12,12 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Task.Model;
 
 namespace Task.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для RegPage.xaml
-    /// </summary>
     public partial class RegPage : Page
     {
         public RegPage()
@@ -32,7 +30,46 @@ namespace Task.Pages
 
         private void RegClick(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                if (string.IsNullOrEmpty(namebox.Text) || string.IsNullOrEmpty(passwordbox.Password) || combobox.SelectedIndex == -1 || string.IsNullOrEmpty(dolzbox.Text))
+                {
+                    MessageBox.Show("Заполните все!");
+                }
+                else
+                {
 
+                    MessageBox.Show("Регистрация выполнена!");
+
+                    Employees employe = new Employees();
+                    employe.ID = AppData.db.Employees.Any() ? AppData.db.Employees.Max(u => u.ID) + 1 : 1;
+                    employe.Name = namebox.Text;
+                    employe.Password = passwordbox.Password;
+                    employe.DepartmentID = combobox.SelectedIndex + 1;
+                    employe.Profession = dolzbox.Text;
+                    if (combobox.SelectedIndex == 0)
+                    {
+                        employe.PositionID = 1;
+                    }
+                    else if (combobox.SelectedIndex == 1)
+                    {
+                        employe.PositionID = 2;
+                    }
+                    else
+                    {
+                        employe.PositionID = 3;
+                    }
+
+                    AppData.db.Employees.Add(employe);
+                    AppData.db.SaveChanges();
+                    NavigationService.Navigate(new AuthPage());
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }          
         }
     }
 }

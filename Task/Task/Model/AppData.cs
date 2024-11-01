@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Task.Model
 {
-    internal class AppData
+    class AppData
     {
+        public static AccountingDataBaseEntities db = new AccountingDataBaseEntities(); 
     }
 }

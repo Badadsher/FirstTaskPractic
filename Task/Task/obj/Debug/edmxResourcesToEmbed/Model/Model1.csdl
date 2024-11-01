@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AccountingDataBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Deduc">
+    <Key>
+      <PropertyRef Name="DeductionID" />
+    </Key>
+    <Property Name="DeductionID" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="TaxAmount" Type="Int32" Nullable="false" />
+    <Property Name="AlimonyAmount" Type="Int32" Nullable="false" />
+    <Property Name="OtherDeductions" Type="Int32" Nullable="false" />
+    <Property Name="TotalDeductions" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Employees" Relationship="Self.FK_Deduc_Employees" FromRole="Deduc" ToRole="Employees" />
+    <NavigationProperty Name="Payroll" Relationship="Self.FK_Payroll_Deduc" FromRole="Deduc" ToRole="Payroll" />
+  </EntityType>
+  <EntityType Name="Departments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="DepartmentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Employees" Relationship="Self.FK_Employees_Departments" FromRole="Departments" ToRole="Employees" />
+  </EntityType>
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PositionID" Type="Int32" Nullable="false" />
+    <Property Name="Profession" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DepartmentID" Type="Int32" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Deduc" Relationship="Self.FK_Deduc_Employees" FromRole="Employees" ToRole="Deduc" />
+    <NavigationProperty Name="Departments" Relationship="Self.FK_Employees_Departments" FromRole="Employees" ToRole="Departments" />
+    <NavigationProperty Name="Positions" Relationship="Self.FK_Employees_Positions" FromRole="Employees" ToRole="Positions" />
+    <NavigationProperty Name="Payroll" Relationship="Self.FK_Payroll_Employees" FromRole="Employees" ToRole="Payroll" />
+    <NavigationProperty Name="Reports" Relationship="Self.FK_Reports_Employees" FromRole="Employees" ToRole="Reports" />
+  </EntityType>
+  <EntityType Name="Payroll">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="BaseSalary" Type="Int32" Nullable="false" />
+    <Property Name="Bonus" Type="Int32" Nullable="false" />
+    <Property Name="SickCompensation" Type="Int32" Nullable="false" />
+    <Property Name="DeductionsID" Type="Int32" Nullable="false" />
+    <Property Name="TotalAmount" Type="Int32" Nullable="false" />
+    <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Deduc" Relationship="Self.FK_Payroll_Deduc" FromRole="Payroll" ToRole="Deduc" />
+    <NavigationProperty Name="Employees" Relationship="Self.FK_Payroll_Employees" FromRole="Payroll" ToRole="Employees" />
+    <NavigationProperty Name="Reports" Relationship="Self.FK_Reports_Payroll" FromRole="Payroll" ToRole="Reports" />
+  </EntityType>
+  <EntityType Name="Positions">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="PositionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Salary" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Employees" Relationship="Self.FK_Employees_Positions" FromRole="Positions" ToRole="Employees" />
+  </EntityType>
+  <EntityType Name="Reports">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="ReportDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="TotalPaid" Type="Int32" Nullable="false" />
+    <Property Name="PayrollID" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Employees" Relationship="Self.FK_Reports_Employees" FromRole="Reports" ToRole="Employees" />
+    <NavigationProperty Name="Payroll" Relationship="Self.FK_Reports_Payroll" FromRole="Reports" ToRole="Payroll" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Deduc_Employees">
+    <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+    <End Role="Deduc" Type="Self.Deduc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Deduc">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payroll_Deduc">
+    <End Role="Deduc" Type="Self.Deduc" Multiplicity="1" />
+    <End Role="Payroll" Type="Self.Payroll" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Deduc">
+        <PropertyRef Name="DeductionID" />
+      </Principal>
+      <Dependent Role="Payroll">
+        <PropertyRef Name="DeductionsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employees_Departments">
+    <End Role="Departments" Type="Self.Departments" Multiplicity="1" />
+    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departments">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="DepartmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employees_Positions">
+    <End Role="Positions" Type="Self.Positions" Multiplicity="1" />
+    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Positions">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="PositionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payroll_Employees">
+    <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+    <End Role="Payroll" Type="Self.Payroll" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Payroll">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reports_Employees">
+    <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+    <End Role="Reports" Type="Self.Reports" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Reports">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reports_Payroll">
+    <End Role="Payroll" Type="Self.Payroll" Multiplicity="1" />
+    <End Role="Reports" Type="Self.Reports" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Payroll">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Reports">
+        <PropertyRef Name="PayrollID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AccountingDataBaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Deduc" EntityType="Self.Deduc" />
+    <EntitySet Name="Departments" EntityType="Self.Departments" />
+    <EntitySet Name="Employees" EntityType="Self.Employees" />
+    <EntitySet Name="Payroll" EntityType="Self.Payroll" />
+    <EntitySet Name="Positions" EntityType="Self.Positions" />
+    <EntitySet Name="Reports" EntityType="Self.Reports" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <AssociationSet Name="FK_Deduc_Employees" Association="Self.FK_Deduc_Employees">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Deduc" EntitySet="Deduc" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payroll_Deduc" Association="Self.FK_Payroll_Deduc">
+      <End Role="Deduc" EntitySet="Deduc" />
+      <End Role="Payroll" EntitySet="Payroll" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employees_Departments" Association="Self.FK_Employees_Departments">
+      <End Role="Departments" EntitySet="Departments" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employees_Positions" Association="Self.FK_Employees_Positions">
+      <End Role="Positions" EntitySet="Positions" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payroll_Employees" Association="Self.FK_Payroll_Employees">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Payroll" EntitySet="Payroll" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reports_Employees" Association="Self.FK_Reports_Employees">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Reports" EntitySet="Reports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reports_Payroll" Association="Self.FK_Reports_Payroll">
+      <End Role="Payroll" EntitySet="Payroll" />
+      <End Role="Reports" EntitySet="Reports" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Heisenberg\Downloads\FirstTaskPractic\Task\Task\App.xaml
-3-802008573
+7-1325560582
 2739969757
-191819302585
+23-86320410
 1837398601
-MainWindow.xaml;Pages\AuthPage.xaml;Pages\RegPage.xaml;
+MainWindow.xaml;Pages\AuthPage.xaml;Pages\DeducPage.xaml;Pages\EmpPage.xaml;Pages\PayrollPage.xaml;Pages\RegPage.xaml;Pages\ReportsPage.xaml;
 
-False
+True
 
